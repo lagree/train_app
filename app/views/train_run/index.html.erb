@@ -14,7 +14,10 @@
       <td><%= trainrun.route%></td>
       <td><%= trainrun.run_number %></td>
       <td><%= trainrun.operator_id %></td>
-      <td><%= link_to 'Delete',train_run_path(trainrun), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Edit',edit_train_run_path(trainrun) %>
+      <td><%= link_to 'Delete',train_run_path(trainrun), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      </td>
     </tr>
     <br />
   <% end %>

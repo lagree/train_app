@@ -63,5 +63,15 @@ describe TrainRunController do
 
 	end	
 
+	describe "update" do
+		it "updates a route" do
+       		@trainrun=TrainRun.create({ route: "Green", train_line: "R1", run_number: "B", operator_id: "billy" })
+       		post :update, id: @trainrun, train_run: { route: "Red" }
+			get :index
+			@trainrun=assigns(:train_runs)[0]
+			expect(@trainrun[:route]).to eq("Red")
+		end
+	end
+
 
 end

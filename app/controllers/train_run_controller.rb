@@ -12,6 +12,21 @@ def destroy
 	redirect_to train_run_index_path
 end
 
+def edit
+	@train_run = TrainRun.find(params[:id])
+end
+
+def update
+  @train_run = TrainRun.find(params[:id])
+
+  if @train_run.update(params[:train_run].permit(:train_line, :route,:run_number,:operator_id))
+    redirect_to train_run_index_path
+  else
+    render 'edit'
+  end
+end
+
+
 def upload
 	
   	uploaded_io = params[:routefile]

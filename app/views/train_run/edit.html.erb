@@ -1,0 +1,30 @@
+<h1>Edit Train Run</h1>
+ 
+<%= form_for :train_run, url: train_run_path(@train_run), method: :patch do |f| %>
+  
+  <p>
+    <%= f.label :train_line %><br>
+    <%= f.text_area :train_line %>
+  </p>
+ 
+  <p>
+    <%= f.label :route %><br>
+    <%= f.text_area :route %>
+  </p>
+ 
+ <p>
+    <%= f.label :run_number %><br>
+    <%= f.text_area :run_number %>
+  </p>
+
+  <p>
+    <%= f.label :operator_id %><br>
+    <%= f.text_area :operator_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Save Train Run"%>
+  </p>
+<% end %>
+ 
+<%= link_to 'Back', train_run_index_path %>
