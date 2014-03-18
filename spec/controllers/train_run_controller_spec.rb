@@ -4,7 +4,7 @@ describe TrainRunController do
 	describe "GET index" do
 
 		it "assigns train_runs" do
-			tr=TrainRun.create({ route: "R1", train_line: "Green", run_number: "A5", operator_id: "billy" })
+			tr=TrainRun.create({ route: "Green", train_line: "R1", run_number: "A5", operator_id: "billy" })
 	      	get :index
 	      	expect(assigns(:train_runs)).to eq([tr])
 		end
@@ -16,11 +16,29 @@ describe TrainRunController do
 		end
 
 		it "gives records in alphabetical order by run number" do
-			trainrun1=TrainRun.create({ route: "R1", train_line: "Green", run_number: "B", operator_id: "billy" })
-			trainrun2=TrainRun.create({ route: "R1", train_line: "Green", run_number: "A", operator_id: "billy" })
+			trainrun1=TrainRun.create({ route: "Green", train_line: "R1", run_number: "B", operator_id: "billy" })
+			trainrun2=TrainRun.create({ route: "Green", train_line: "R1", run_number: "A", operator_id: "billy" })
 	      	get :index
 	      	expect(assigns(:train_runs)).to eq([trainrun2,trainrun1])
 		end
 	
 	end
+
+	describe "POST upload" do
+       it "add two entries from a csv" do
+       	 @file = fixture_file_upload('example.csv', 'text/csv')
+         post :upload, :routefile => @file
+
+      	 expect(assigns(:train_runs).count).to eq(2)
+       end
+
+       it "does not add duplicate entries twice" do
+      	 @file = fixture_file_upload('duplicate.csv', 'text/csv')
+         post :upload, :routefile => @file
+      	 expect(assigns(:train_runs).count).to eq(1)
+       end
+
+	end
+
+
 end

@@ -7,6 +7,7 @@
       <td ><b>Operator ID</b></td>   
   </tr>
 </thead>
+<br />
   <% @train_runs.each do |trainrun| %>
     <tr>
       <td><%= trainrun.train_line %></td>
@@ -14,4 +15,14 @@
       <td><%= trainrun.run_number %></td>
       <td><%= trainrun.operator_id %></td>
     </tr>
+    <br />
   <% end %>
+  <br \>
+  Add your train routes below.  Your file must be in CSV format with train line, route name, run number, and operator ID as the first four columns.<br /><br />
+<%= form_tag({action: :upload}, multipart: true) do %>
+
+  <div >
+    <%= file_field_tag 'routefile' %><br \>
+    <%= submit_tag( "Add file to train listings" ) %>
+  </div>
+<% end %>
