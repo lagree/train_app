@@ -1,8 +1,10 @@
 TrainApp::Application.routes.draw do
-    resources :train_runs
+    resources :train_run
 
     root to: "train_run#index"
     post "train_run/upload" => "train_run#upload"
+    post "train_run/destroy" => "train_run#destroy"
+
     
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

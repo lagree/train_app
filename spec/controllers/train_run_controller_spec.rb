@@ -38,7 +38,30 @@ describe TrainRunController do
       	 expect(assigns(:train_runs).count).to eq(1)
        end
 
+       it "renders index after upload" do
+       		@file = fixture_file_upload('duplicate.csv', 'text/csv')
+         	post :upload, :routefile => @file
+			response.should render_template("index") 	        
+       end
+
 	end
+
+	describe "POST delete" do
+       it "add two entries and deletes one" do
+       		trainrun1=TrainRun.create({ route: "Green", train_line: "R1", run_number: "B", operator_id: "billy" })
+			trainrun2=TrainRun.create({ route: "Green", train_line: "R1", run_number: "A", operator_id: "billy" })
+   	        delete :destroy, id: trainrun1
+   	        get :index
+	      	expect(assigns(:train_runs).count).to eq(1)
+       end
+
+        it "redirects after delete" do
+       		trainrun1=TrainRun.create({ route: "Green", train_line: "R1", run_number: "B", operator_id: "billy" })
+   	        delete :destroy, id: trainrun1
+			response.should redirect_to train_run_index_path 	        
+       end
+
+	end	
 
 
 end

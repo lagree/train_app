@@ -6,6 +6,12 @@ def index
 	@train_runs = TrainRun.order("run_number asc")
 end
 
+def destroy
+	@train_run = TrainRun.find(params[:id])
+	@train_run.destroy
+	redirect_to train_run_index_path
+end
+
 def upload
 	
   	uploaded_io = params[:routefile]
