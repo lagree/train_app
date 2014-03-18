@@ -1,0 +1,17 @@
+<h1><%= link_to "Chicago Train Routes",controller: "train_run" %></h1>
+<thead>
+ <tr>
+      <td ><b>Train Line</b></td>
+      <td ><b>Route Name</b></td>
+      <td ><b>Run Number</b></td>
+      <td ><b>Operator ID</b></td>   
+  </tr>
+</thead>
+  <% @train_runs.each do |trainrun| %>
+    <tr>
+      <td><%= trainrun.train_line %></td>
+      <td><%= trainrun.route%></td>
+      <td><%= trainrun.run_number %></td>
+      <td><%= trainrun.operator_id %></td>
+    </tr>
+  <% end %>
