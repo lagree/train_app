@@ -18,6 +18,8 @@ group :test do
   gem 'capybara', '2.1.0'
 end
 
+gem 'jquery-rails', '3.1.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
