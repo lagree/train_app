@@ -42,7 +42,7 @@ def upload
 	   	end
 
 	rescue
-	    flash[:notice] = "failure"
+	    flash.now[:notice] = "failure"
 	ensure
 	   	#delete file now that we are done
 	   	if uploaded_io.nil? == false

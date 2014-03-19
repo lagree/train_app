@@ -38,6 +38,12 @@ describe TrainRunController do
       	 expect(assigns(:train_runs).count).to eq(1)
        end
 
+       it "does not add anything for empty csv" do
+      	 @file = fixture_file_upload('empty.csv', 'text/csv')
+         post :upload, :routefile => @file
+      	 expect(assigns(:train_runs).count).to eq(0)
+       end
+
        it "renders index after upload" do
        		@file = fixture_file_upload('duplicate.csv', 'text/csv')
          	post :upload, :routefile => @file

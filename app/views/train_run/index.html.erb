@@ -1,11 +1,24 @@
-<h1><%= link_to "Chicago Train Routes",controller: "train_run" %></h1>
+<% if flash.now[:notice]=="failure" %>
+    <div class="alert alert-danger">  Error reading CSV file. Check the contents of the file. </div>
+<% end %>
+
+<center>
+<div class="container" >
+<div class="starter-template" >
+<h1>Chicago Train Routes</h1>
+<table style='table-layout:fixed' class="table table-condensed" width=80% id="trainTable">
+<style>
+  td {overflow:hidden;}
+</style>
 <thead>
  <tr>
       <td ><b>Train Line</b></td>
       <td ><b>Route Name</b></td>
       <td ><b>Run Number</b></td>
-      <td ><b>Operator ID</b></td>   
-  </tr>
+      <td ><b>Operator ID</b></td>    
+      <td width=10%></td>
+      <td width=10%></td>
+</tr>
 </thead>
 <br />
   <% @train_runs.each do |trainrun| %>
@@ -19,14 +32,17 @@
 
       </td>
     </tr>
-    <br />
   <% end %>
+  </table>
   <br \>
-  Add your train routes below.  Your file must be in CSV format with train line, route name, run number, and operator ID as the first four columns.<br /><br />
+  Add your train routes by uploading a file below.  Your file must be in CSV format with train line, route name, run number, and operator ID as the first four columns.<br /><br />
 <%= form_tag({action: :upload}, multipart: true) do %>
 
-  <div >
+  <div class="form-group">
     <%= file_field_tag 'routefile' %><br \>
     <%= submit_tag( "Add file to train listings" ) %>
   </div>
 <% end %>
+
+</div>
+</div>
