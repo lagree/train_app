@@ -6,7 +6,7 @@ Steve Lagree
 
 This is a simple app to upload, view, and manage train route information.  
 It expects you to upload CSV files with four columns in the order of Train Line, Route Name, Run Number, and Operator ID.  The first column of your CSV must be a header file.
-It uses ruby on rails with an sqlite database.  
+It uses ruby on rails with a postgresql database.  
 
 To get a fresh copy use
 git clone https://github.com/lagree/train_app.git
@@ -18,8 +18,7 @@ If you have bundler (gem install bundler), use
 	bundle install
 
 * System dependencies
-This application uses sqlite as a database.  This could be easily changed to use MySQL or Postgres.
-Any system that can run rails and the required gems will work.
+This application uses postgresql hosted on heroku.  Any system that can run rails and the required gems will work.
 
 * How to run the test suite
 In the root directory of this application, run:

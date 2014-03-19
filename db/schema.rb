@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140318004755) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "train_runs", force: true do |t|
     t.string   "train_line"
     t.string   "route"
